@@ -48,4 +48,8 @@ COPY requirements.txt /app/
 EXPOSE 5000
 
 # Run the application.
-CMD ["python", "modelo_datos.py"]
+#CMD ["python", "eliminar_tablas.py"]
+#CMD ["python", "modelo_datos.py"]
+#CMD ["python", "check_tables.py"]
+#CMD ["python", "carga_datos.py"]
+CMD ["python", "query.py"]
