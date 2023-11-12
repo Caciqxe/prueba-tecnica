@@ -1,6 +1,5 @@
 import pandas as pd
 from sqlalchemy import create_engine
-from conexion import conexion
 
 engine = create_engine('postgresql://postgres:1234@db:5432/example')
 
@@ -27,6 +26,7 @@ trips_col = [
     'start_lon',
     'end_lat',
     'end_lon',
+    'travel_dist',
     'price_amount',
     'price_tax',
     'price_total'

@@ -3,22 +3,28 @@ P.1:
 
 R.1:
     Para esta base de datos realicé un modelo de estrella, con la fact table que contiene la información de trips, y 2 dimension table para almacenar users y vehicles.
-    A su vez el membership_id se incorporo en el fact table para facilitar el análisis de que membership_id tenía en ese momento el usuario que realizó el viaje, ya que el usuario a lo largo de su vida como cliente podria cambiar de membership.
+    ![Screenshot](star_scheme.png)
 
-    A su vez bajo este ejemplo de ejercicio la tabla está pensada para reemplazar el status_id en trips, pero habría que levantar con el área si existe una necesidad de capturar esos cambios de estados.
+    Elegí este modelo ya que para el caso presentado al no tener información respecto a requerimientos de seguridad o recursos permite una arquitectura más facil de comprender al no estar tan disgregada y sigue poniendo enfasís en los viajes realizados que viene a ser complementada por las tablas de dimensiones con el objetivo de no repetir información.
+
+    De todas formas si existieran requisitos especificos de privacidad de los datos o solicitudes del cliente interno especificas dejo también una arquitectura con más tablas aun que se trabajara en base al primer esquema señalado.
+    ![Screenshot](alt_scheme.png)
 
 
 P.3
     Crea las tablas del modelo de datos que diseñaste en el paso 1. Puede usar scripts SQL o código en Python.
 
 R.3
-    Se realizó a través de modelo_datos.py
+    Se realizó a través de modelo_datos.py donde se realiza la conexión a la base de datos en postgres
+    creando las tablas necesarias para el modelo si es que estas no existen
 
 P.4
     Genera archivos en Python para cargar los datos del archivo trips.csv en las tablas que creaste en el paso anterior.
 
 R.4
-    Se realizó a través de carga_datos.py
+    Se realizó a través de carga_datos.py donde utilizando pandas se proceso el archivo csv entregado creando dataframes
+    especificos según la tabla necesaria. Estos posteriormente son cargados utilizando la función de pandas especifica junto con la la conexión
+    a través de sqlalchemy al postgres.
 
 
 P.5 
@@ -33,7 +39,9 @@ P.5
     iii) Señale (sin necesidad de implementar) cómo podría automatizar este proceso de ETL de manera diaria.
 
 R.5
-    i) Se realizó a través de carga_datos.py
+    i) Se realizó a través de carga_datos.py donde se agruparon de forma diaria los valores y se realizaron los cálculos requeridos. Posteriormente se renombro la columna
+    a dia y se creo una columna de id. Después se realizo la carga a las tablas utilizando la función de pandas especifica junto con la la conexión a través de 
+    sqlalchemy al postgres.
 
     ii) En primer lugar revisar que los datos no se encuentren dúplicados, y haría restricciones para verificar que los datos ingresados tengan el formato correspondiente. Un ejemplo de esto sería tambien revisar que el price_tax se calcula correctamente y corresponde al 19% del price_amount y verificaria que price_total sea correcto.
     Otro punto relevante es que crearia un código para almacenar los valores rechazados en otra tabla para así poder análisis del por que ha ocurrido esto.

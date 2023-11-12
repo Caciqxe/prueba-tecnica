@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS trips(
     start_lon VARCHAR(255),
     end_lat VARCHAR(255),
     end_lon VARCHAR(255),
+    travel_dist NUMERIC,
     price_amount NUMERIC,
     price_tax NUMERIC,
     price_total NUMERIC,

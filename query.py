@@ -5,7 +5,7 @@ conn, cur = conexion()
 
 query = """
     SELECT *
-    FROM resumen_diario
+    FROM trips
     LIMIT 20
 """
 
