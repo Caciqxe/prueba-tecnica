@@ -11,7 +11,7 @@ R.1:
 
     De todas formas si existieran requisitos especificos de privacidad de los datos o solicitudes del cliente interno especificas dejo también
     una arquitectura con más tablas aun que se trabajara en base al primer esquema señalado.
-![Screenshot](alt_scheme.png)
+    ![Screenshot](alt_scheme.png)
 
 
 P.3
@@ -46,16 +46,21 @@ R.5
     a dia y se creo una columna de id. Después se realizo la carga a las tablas utilizando la función de pandas especifica junto con la la conexión a través de 
     sqlalchemy al postgres.
 
-    Para generar el resumen utilice las funciones de pandas incorporadas para reducir recursos donde cantidad de viajes es un 'count' al número de registros para ese día especifico, la suma de ingresos sería 'sum' de los montos totales del día y al igual que el promedio sería 'mean' de esta misma columna, y con respecto a la suma de metros seria 'sum' de la columna que ve los metros de los trayectos del día.
+    Para generar el resumen utilice las funciones de pandas incorporadas para reducir recursos donde cantidad de viajes es un 'count' al número de registros para ese día
+    especifico, la suma de ingresos sería 'sum' de los montos totales del día y al igual que el promedio sería 'mean' de esta misma columna, y con respecto a la suma de metros
+    seria 'sum' de la columna que ve los metros de los trayectos del día.
 
-    Está lógica la implemente según la información disponible en el ejercicio, asumiendo que es la primera vez que se carga toda la información a la tabla resumen_diario, para el manejo de día a día de la base de datos se creo un archivo llamado operador_diario.py con el ejemplo de como se realizaría. 
+    Está lógica la implemente según la información disponible en el ejercicio, asumiendo que es la primera vez que se carga toda la información a la tabla resumen_diario, para
+    el manejo de día a día de la base de datos se creo un archivo llamado operador_diario.py con el ejemplo de como se realizaría. 
 
     ii) En primer lugar revisar que los datos no se encuentren dúplicados, y haría restricciones para verificar que los 
     datos ingresados tengan el formato correspondiente. Un ejemplo de esto sería tambien revisar que el price_tax se calcula correctamente 
     y corresponde al 19% del price_amount y verificaria que price_total sea correcto.
     Otro punto relevante es que crearia un código para almacenar los valores rechazados en otra tabla para así poder análisis del por que ha ocurrido esto.
 
-    iii) A pesar de no implementarlo agregue un codigo que se llama operador_diario.py donde está el como realizaría el proceso para manejarlo de forma diaria a través de aiflow con el scheduler filtrando el csv por la fecha del día con el objetivo de solamente realizar los calculos en los datos del día para optimizar recursos y posteriormente cargando esos datos a la tabla existente.
+    iii) A pesar de no implementarlo agregue un codigo que se llama operador_diario.py donde está el como realizaría el proceso para manejarlo de forma diaria a través de
+    aiflow con el scheduler filtrando el csv por la fecha del día con el objetivo de solamente realizar los calculos en los datos del día para optimizar recursos y
+    posteriormente cargando esos datos a la tabla existente.
 
 
 
@@ -67,10 +72,10 @@ R.6
     sacando de trips price_amount, price_tax y price_total. En la nueva tabla payments agregaria las columnas price_amount_before_cupon, 
     price_tax_before_cupon, cupon_amount y con eso pondria 3 columnas más las cuales serían price_amount_after_cupon, price_tax_after_cupon y price_total.
 
-    Esta sería la mejor forma ya que al agregar un cupón este se encuentra mayormente relacionando con el pago, permite crear una nueva tabla más relacionada a la parte 
-    financiera del negocio, capturando más datos como el viaje antes de los descuentos y después de los descuentos, además de más información que pudiera ser relevante con 
+    Esta sería la mejor forma ya que al agregar un cupón este se encuentra mayormente relacionando con el pago, permite crear una nueva tabla más relacionada a la parte
+    financiera del negocio, capturando más datos como el viaje antes de los descuentos y después de los descuentos, además de más información que pudiera ser relevante con
     respecto a esta área. A su vez al momento de generar reporteria a un área financiera se podría consultar solamente esta tabla trayendo la información pertinente. 
     
-    Se debe entender que la arquitectura está basada en la información del caso, ya que por ejemplo si el área de finanzas requiriera no solo esta información del pago si no 
-    que también de los vehiculos utilizados por un tema del costo de estos, e incluso la distancia recorrida por temas de vida util, y varios casos más donde toda información 
+    Se debe entender que la arquitectura está basada en la información del caso, ya que por ejemplo si el área de finanzas requiriera no solo esta información del pago si no
+    que también de los vehiculos utilizados por un tema del costo de estos, e incluso la distancia recorrida por temas de vida util, y varios casos más donde toda información
     disgregada se tenga que volver a unir esto repecutiria en la arquitectura planteada. 
