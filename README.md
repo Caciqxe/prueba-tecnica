@@ -46,13 +46,17 @@ R.5
     a dia y se creo una columna de id. Después se realizo la carga a las tablas utilizando la función de pandas especifica junto con la la conexión a través de 
     sqlalchemy al postgres.
 
+    Para generar el resumen utilice las funciones de pandas incorporadas para reducir recursos donde cantidad de viajes es un 'count' al número de registros para ese día especifico, la suma de ingresos sería 'sum' de los montos totales del día y al igual que el promedio sería 'mean' de esta misma columna, y con respecto a la suma de metros seria 'sum' de la columna que ve los metros de los trayectos del día.
+
+    Está lógica la implemente según la información disponible en el ejercicio, asumiendo que es la primera vez que se carga toda la información a la tabla resumen_diario, para el manejo de día a día de la base de datos se creo un archivo llamado operador_diario.py con el ejemplo de como se realizaría. 
+
     ii) En primer lugar revisar que los datos no se encuentren dúplicados, y haría restricciones para verificar que los 
     datos ingresados tengan el formato correspondiente. Un ejemplo de esto sería tambien revisar que el price_tax se calcula correctamente 
     y corresponde al 19% del price_amount y verificaria que price_total sea correcto.
     Otro punto relevante es que crearia un código para almacenar los valores rechazados en otra tabla para así poder análisis del por que ha ocurrido esto.
 
-    iii) Utilizaría herramientas especificas como airflow ya que al tener clock y trigger por eventos 
-    permiten asignar una frecuencia para ejecutar la query la cual en este caso sería diaria.
+    iii) A pesar de no implementarlo agregue un codigo que se llama operador_diario.py donde está el como realizaría el proceso para manejarlo de forma diaria a través de aiflow con el scheduler filtrando el csv por la fecha del día con el objetivo de solamente realizar los calculos en los datos del día para optimizar recursos y posteriormente cargando esos datos a la tabla existente.
+
 
 
 P.6

@@ -46,7 +46,6 @@ df_vehicles.to_sql('vehicles', con=engine, index=False, if_exists='append')
 df_fact.to_sql('trips', con=engine, index=False, if_exists='append')
 
 
-
 resumen_diario = df.groupby(df['booking_time'].dt.date).agg(
     conteo_usuarios=('user_id', 'count'),
     precio_total=('price_total','sum'),
