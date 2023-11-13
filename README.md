@@ -3,8 +3,8 @@ P.1:
 
 R.1:
     Para esta base de datos realicé un modelo de estrella, con la fact table que contiene la información de trips, y 2 dimension table para almacenar users y vehicles.
-    FIG 1.
     ![Screenshot](star_scheme.png)
+    FIG 1.
 
     Elegí este modelo ya que para el caso presentado al no tener información respecto a requerimientos de seguridad o recursos permite una arquitectura más facil de comprender 
     al no estar tan disgregada y sigue poniendo enfasís en los viajes realizados que viene a ser complementada por las tablas de dimensiones con el objetivo de no repetir 
@@ -12,9 +12,9 @@ R.1:
 
     De todas formas si existieran requisitos especificos de privacidad de los datos o solicitudes del cliente interno especificas dejo también
     una arquitectura con más tablas aun que se trabajara en base al primer esquema señalado.
-    FIG 2.
+    
 ![Screenshot](alt_scheme.png)
-
+FIG 2.
 
 P.3
     Crea las tablas del modelo de datos que diseñaste en el paso 1. Puede usar scripts SQL o código en Python.
@@ -73,8 +73,9 @@ R.6
     En caso de implementar el sistema de descuento a través de cupones crearia una nueva tabla de dimensión para los pagos llamada payments, 
     sacando de trips price_amount, price_tax y price_total. En la nueva tabla payments agregaria las columnas price_amount_before_cupon, 
     price_tax_before_cupon, cupon_amount y con eso pondria 3 columnas más las cuales serían price_amount_after_cupon, price_tax_after_cupon y price_total.
+    
+![Screenshot](cupon_scheme.png)
     FIG 3.
-    ![Screenshot](cupon_scheme.png)
 
     Esta sería la mejor forma ya que al agregar un cupón este se encuentra mayormente relacionando con el pago, permite crear una nueva tabla más relacionada a la parte
     financiera del negocio, capturando más datos como el viaje antes de los descuentos y después de los descuentos, además de más información que pudiera ser relevante con
