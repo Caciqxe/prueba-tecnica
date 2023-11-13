@@ -11,7 +11,7 @@ R.1:
 
     De todas formas si existieran requisitos especificos de privacidad de los datos o solicitudes del cliente interno especificas dejo también
     una arquitectura con más tablas aun que se trabajara en base al primer esquema señalado.
-    ![Screenshot](alt_scheme.png)
+![Screenshot](alt_scheme.png)
 
 
 P.3
