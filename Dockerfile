@@ -41,15 +41,13 @@ USER appuser
 
 # Copy the source code into the container.
 COPY . .
-COPY modelo_datos.py /app/
+COPY app.py /app/
 COPY requirements.txt /app/
+COPY scripts /app/scripts
+COPY files /app/files
 
 # Expose the port that the application listens on.
 EXPOSE 5000
 
 # Run the application.
-#CMD ["python", "eliminar_tablas.py"]
-#CMD ["python", "modelo_datos.py"]
-#CMD ["python", "revisar_tablas.py"]
-#CMD ["python", "carga_datos.py"]
-CMD ["python", "query.py"]
+CMD ["python", "app.py"]

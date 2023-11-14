@@ -36,9 +36,8 @@ df = pd.read_csv('./files/trips.csv')
 df['booking_time'] = pd.to_datetime(df['booking_time'])
 
 df_users = df[users_col].drop_duplicates()
-print(df_users.shape)
 df_vehicles = df[vehicles_col].drop_duplicates()
-print(df_vehicles.shape)
+
 df_fact = df[trips_col]
 
 df_users.to_sql('users', con=engine, index=False, if_exists='append')
