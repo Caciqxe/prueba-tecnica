@@ -8,8 +8,9 @@ R.1:
     ![Screenshot](./images/star_scheme.png)
     FIGURA 1.
 
-    Elegí este modelo ya que para el caso presentado al no tener información respecto a requerimientos de seguridad o recursos permite una arquitectura más facil de comprender 
-    al no estar tan disgregada y sigue poniendo enfasís en los viajes realizados que viene a ser complementada por las tablas de dimensiones con el objetivo de no repetir 
+    Elegí este modelo ya que para el caso presentado al no tener información respecto a requerimientos de
+    seguridad o recursos permite una arquitectura más facil de comprender al no estar tan disgregada y sigue poniendo
+    enfasís en los viajes realizados que viene a ser complementada por las tablas de dimensiones con el objetivo de no repetir 
     información.
 
     De todas formas si existieran requisitos especificos de privacidad de los datos o solicitudes del cliente interno especificas dejo también
@@ -30,7 +31,7 @@ P.4
 
 R.4
     Se realizó a través de carga_datos.py donde utilizando pandas se proceso el archivo csv entregado creando dataframes
-    especificos según la tabla necesaria. Estos posteriormente son cargados utilizando la función de pandas especifica junto con la la conexión
+    especificos según la tabla necesaria. Estos posteriormente son cargados utilizando la función de pandas especifica junto con la conexión
     a través de sqlalchemy al postgres.
 
 
@@ -50,21 +51,21 @@ R.5
     a dia y se creo una columna de id. Después se realizo la carga a las tablas utilizando la función de pandas especifica junto con la la conexión a través de 
     sqlalchemy al postgres.
 
-    Para generar el resumen utilice las funciones de pandas incorporadas para reducir recursos donde cantidad de viajes es un 'count' al número de registros para ese día
+    Para generar el resumen utilice las funciones de pandas incorporadas optimizando el codigo, donde cantidad de viajes es un 'count' al número de registros para ese día
     especifico, la suma de ingresos sería 'sum' de los montos totales del día y al igual que el promedio sería 'mean' de esta misma columna, y con respecto a la suma de metros
     seria 'sum' de la columna que ve los metros de los trayectos del día.
 
     Está lógica la implemente según la información disponible en el ejercicio, asumiendo que es la primera vez que se carga toda la información a la tabla resumen_diario, para
-    el manejo de día a día de la base de datos se creo un archivo llamado operador_diario.py con el ejemplo de como se realizaría. 
+    el manejo de día a día de la base de datos se creo un archivo llamado operador_diario.py con el ejemplo de como se realizaría.
 
     ii) En primer lugar revisar que los datos no se encuentren dúplicados, y haría restricciones para verificar que los 
     datos ingresados tengan el formato correspondiente. Un ejemplo de esto sería tambien revisar que el price_tax se calcula correctamente 
     y corresponde al 19% del price_amount y verificaria que price_total sea correcto.
     Otro punto relevante es que crearia un código para almacenar los valores rechazados en otra tabla para así poder análisis del por que ha ocurrido esto.
 
-    iii) A pesar de no implementarlo agregue un codigo que se llama operador_diario.py donde está el como realizaría el proceso para manejarlo de forma diaria a través de
+    iii) A pesar de no implementarlo agregue un código llamador operador_diario.py donde está el como realizaría el proceso para manejarlo de forma diaria a través de
     aiflow con el scheduler filtrando el csv por la fecha del día con el objetivo de solamente realizar los calculos en los datos del día para optimizar recursos y
-    posteriormente cargando esos datos a la tabla existente.
+    posteriormente cargando esos datos a la tabla existente. Cabé destacar que el código no se ejecutará ya que la fecha de hoy al no existir en la base de datos no retornaría nada, por eso airflow no se encuentra instalado, el código es solamente a modo de ejemplo de como se llevaría a cabo el ETL de forma diaria.
 
 
 
@@ -79,10 +80,12 @@ R.6
 ![Screenshot](./images/cupon_scheme.png)
     FIGURA 3.
 
-    Esta sería la mejor forma ya que al agregar un cupón este se encuentra mayormente relacionando con el pago, permite crear una nueva tabla más relacionada a la parte
-    financiera del negocio, capturando más datos como el viaje antes de los descuentos y después de los descuentos, además de más información que pudiera ser relevante con
-    respecto a esta área. A su vez al momento de generar reporteria a un área financiera se podría consultar solamente esta tabla trayendo la información pertinente. 
+    Esta sería la mejor forma ya que al agregar un cupón este se encuentra mayormente relacionando con el pago. 
+    Permite crear una nueva tabla más relacionada a la parte financiera del negocio, capturando más datos como 
+    el viaje antes y después de los descuentos, además de más información que pudiera ser relevante con respecto a esta área. 
+    A su vez permite que, al momento de generar reporteria a un área financiera, consultar solamente esta tabla trayendo la información pertinente. 
     
-    Se debe entender que la arquitectura está basada en la información del caso, ya que por ejemplo si el área de finanzas requiriera no solo esta información del pago si no
-    que también de los vehiculos utilizados por un tema del costo de estos, e incluso la distancia recorrida por temas de vida util, y varios casos más donde toda información
-    disgregada se tenga que volver a unir esto repecutiria en la arquitectura planteada. 
+    Se debe entender que la arquitectura está basada en la información del caso, ya que por ejemplo si
+    el área de finanzas requiriera no solo está información del pago si no que también de los vehiculos utilizados 
+    por un tema del costo de estos, e incluso la distancia recorrida por temas de vida útil, y varios casos más donde toda información
+    disgregada se tenga que volver a unir esto repecutiria en la arquitectura planteada y se podría evaluar. 
