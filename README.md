@@ -1,4 +1,4 @@
-***Todos los archivos python utilizados en este test técnicos son ejecutados desde app.py, para los codigos especificos de cada uno, porfavor revisar la carpeta scripts. ***
+![**]Todos los archivos python utilizados en este test técnicos son ejecutados desde app.py, para los codigos especificos de cada uno, porfavor revisar la carpeta scripts. [**]
 
 P.1:
     Diseñar un modelo de datos. Genere una propuesta sobre cómo guardar los datos. Justifique esa propuesta y explique por qué es la mejor opción.
